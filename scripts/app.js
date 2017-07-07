@@ -22,7 +22,7 @@ $(document).ready(function() {
 
     qData.features.forEach(function(itemName) {
       $("#info").append(`<p>${itemName.properties.title}</p>`)
-      console.log(itemName.properties.title);
+//console.log(itemName.properties.title);
 
   });
 }
