@@ -6,30 +6,23 @@ $(document).ready(function() {
   // CODE IN HERE!
 
 
+  $.ajax({
+    method: 'GET',
+    url: 'https://earthquake.usgs.gov/fdsnws/event/1/query.geojson?starttime=2017-06-30%2000:00:00&endtime=2017-07-07%2023:59:59&minmagnitude=2.5&orderby=time',
+    dataType: 'json',
+    success: onSuccess
+  });
 });
 
 
-$.ajax({
-method: 'GET',
-url: 'https://earthquake.usgs.gov/fdsnws/event/1/query.geojson?starttime=2017-06-30%2000:00:00&endtime=2017-07-07%2023:59:59&minmagnitude=2.5&orderby=time',
-dataType: 'json',
-success: onSuccess
-});
 
 
   function onSuccess(qData) {
     console.log(qData);
 
+    qData.features.forEach(function(itemName) {
+      $("#info").append(`<p>${itemName.properties.title}</p>`)
+      console.log(itemName.properties.title);
 
-//var quakeList = responseData;
-
-//var dataTitle =
-
-//for
-
-qData.data.forEach(function(v,i) {
-  $(".eqList").append($(`
-    <li>v.data[2].properties.title</li>
-    `));
-})
+  });
 }
